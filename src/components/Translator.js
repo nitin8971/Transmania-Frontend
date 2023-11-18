@@ -75,6 +75,7 @@ function Translator() {
       <form className="translation-form">
         <div className="select-container">
           <select onChange={(e) => setFromLang(e.target.value)} className="select-language">
+          <option>--Select--</option>
             <option value="en">English</option>
             <option value="hi">Hindi</option>
             <option value="kn">Kannada</option>
@@ -83,6 +84,11 @@ function Translator() {
           <span> TO </span>
           <select onChange={(e) => setToLang(e.target.value)} className="select-language">
             {/* Language options */}
+            <option>--Select--</option>
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="kn">Kannada</option>
+            <option value="te">Telugu</option>
           </select>
         </div>
         <div className="text-container">
@@ -98,22 +104,25 @@ function Translator() {
           placeholder="Translated text"
           className="output-text"
         ></textarea>
+          <div className="image-upload">
+            <input type="file" accept="image/*" onChange={handleImageUpload} className="image-input" />
+            {image && (
+              <div className="image-preview">
+                <img src={URL.createObjectURL(image)} alt="Selected" />
+              </div>
+            )}
+          </div>
+          <div>
+            <button onClick={openCamera} className="camera-button">Open Camera</button>
+          </div>
           <button onClick={translateText} className="translate-button">Translate</button>
         </div>
-        {translatedText && (
+        {/* {translatedText && (
           <div className="translated-text">
             <p>{translatedText}</p>
           </div>
-        )}
-        <div className="image-upload">
-          <input type="file" accept="image/*" onChange={handleImageUpload} className="image-input" />
-          {image && (
-            <div className="image-preview">
-              <img src={URL.createObjectURL(image)} alt="Selected" />
-            </div>
-          )}
-        </div>
-        <button onClick={openCamera} className="camera-button">Open Camera</button>
+        )} */}
+        
       </form>
     </div>
   );
